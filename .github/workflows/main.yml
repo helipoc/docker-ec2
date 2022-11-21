@@ -17,7 +17,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: |
-          sudo -s
-          docker rm $(docker stop $(docker ps -a -q --filter ancestor=backend --format="{{.ID}}"))
-          docker build -t backend .
+          sudo -s &&
+          docker rm $(docker stop $(docker ps -a -q --filter ancestor=backend --format="{{.ID}}")) &&
+          docker build -t backend . &&
           docker run -d -p 80:8080 backend
