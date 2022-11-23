@@ -18,6 +18,7 @@ jobs:
           ls ${{ github.workspace }}
           docker build -t backend .
           docker stop web || true
+          docker rm web || true
           echo "running container"
           docker run --name web -d -p 80:8080 backend
           
